@@ -8,8 +8,7 @@ using namespace atl_window_eg;
 
 struct atl_window::atl_window_implementation : public CWindowImpl<atl_window::atl_window_implementation>
 {
-	atl_window_implementation() 
-	{}
+	atl_window_implementation() = default;
 
 	~atl_window_implementation()
 	{

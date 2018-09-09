@@ -14,7 +14,7 @@ auto main() -> int
 		atl_window wnd({ 800, 600 }, L"ATL Window");
 
 		wnd.set_message_callback(atl_window::message_type::keypress,
-								 [&exit_program](uintptr_t key_code, uintptr_t extension) -> bool
+		                         [&exit_program](uintptr_t key_code, uintptr_t extension) -> bool
 		{
 			if (key_code == VK_ESCAPE)
 			{
