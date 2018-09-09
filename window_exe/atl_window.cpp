@@ -78,7 +78,7 @@ struct atl_window::atl_window_implementation : public CWindowImpl<atl_window::at
 		return false;
 	}
 
-	std::array<callback_method, 3> callback_methods{ nullptr };
+	std::array<callback_method, max_message_types> callback_methods{ nullptr };
 };
 
 

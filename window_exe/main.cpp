@@ -10,10 +10,22 @@ auto main() -> int
 	{
 		using namespace atl_window_eg;
 
+		bool exit_program = false;
 		atl_window wnd({ 800, 600 }, L"ATL Window");
 
+		wnd.set_message_callback(atl_window::message_type::keypress,
+								 [&exit_program](uintptr_t key_code, uintptr_t extension) -> bool
+		{
+			if (key_code == VK_ESCAPE)
+			{
+				exit_program = true;
+			}
+
+			return true;
+		});
+
 		wnd.show();
-		while (wnd.handle())
+		while (wnd.handle() and (not exit_program))
 		{
 			wnd.process_messages();
 		}

@@ -4,6 +4,7 @@
 #include <string_view>
 #include <memory>
 #include <cstdint>
+#include <functional>
 
 namespace atl_window_eg
 {
@@ -22,8 +23,10 @@ namespace atl_window_eg
 			activate,
 			keypress
 		};
+		static constexpr uint8_t max_message_types = 3;
 
-		using callback_method = bool(*) (uintptr_t, uintptr_t);
+		//using callback_method = auto (*) (uintptr_t, uintptr_t) -> bool;
+		using callback_method = std::function<bool(uintptr_t, uintptr_t)>;
 
 	public:
 		atl_window(const size &window_size, std::wstring_view title, uint16_t res_icon_id = 0);
