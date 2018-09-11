@@ -41,10 +41,10 @@ struct window::win32_window_implementation
 	}
 
 	void Create(HWND parent_hwnd, 
-				RECT window_rectangle, 
-				const std::wstring &title, 
-				DWORD window_style, 
-				DWORD window_style_ex)
+	            RECT window_rectangle, 
+	            const std::wstring &title, 
+	            DWORD window_style, 
+	            DWORD window_style_ex)
 	{
 		auto[x, y, w, h] = window_rectangle;
 		w = w - x;
