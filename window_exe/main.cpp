@@ -1,4 +1,4 @@
-#include "atl_window.h"
+#include "window.h"
 
 #include <string>
 #include <Windows.h>
@@ -11,9 +11,9 @@ auto main() -> int
 		using namespace atl_window_eg;
 
 		bool exit_program = false;
-		atl_window wnd({ 800, 600 }, L"ATL Window");
+		window wnd({ 800, 600 }, L"ATL Window");
 
-		wnd.set_message_callback(atl_window::message_type::keypress,
+		wnd.set_message_callback(window::message_type::keypress,
 		                         [&exit_program](uintptr_t key_code, uintptr_t extension) -> bool
 		{
 			if (key_code == VK_ESCAPE)

@@ -6,9 +6,11 @@
 #include <cstdint>
 #include <functional>
 
+//#define WIN32_WINDOW_IMPL
+
 namespace atl_window_eg
 {
-	class atl_window
+	class window
 	{
 	public:
 		struct size
@@ -29,8 +31,8 @@ namespace atl_window_eg
 		using callback_method = std::function<bool(uintptr_t, uintptr_t)>;
 
 	public:
-		atl_window(const size &window_size, std::wstring_view title, uint16_t res_icon_id = 0);
-		~atl_window();
+		window(const size &window_size, std::wstring_view title, uint16_t res_icon_id = 0);
+		~window();
 
 		void set_message_callback(message_type msg, const callback_method &callback);
 		void show();
@@ -40,6 +42,14 @@ namespace atl_window_eg
 
 	private:
 		struct atl_window_implementation;
-		std::unique_ptr<atl_window_implementation> window_impl;
+		struct win32_window_implementation;
+
+#ifndef WIN32_WINDOW_IMPL
+		using window_impl_type = atl_window_implementation;
+#else
+		using window_impl_type = win32_window_implementation;
+#endif // !WIN32_WINDOW_IMPL
+
+		std::unique_ptr<window_impl_type> window_impl;
 	};
 }
