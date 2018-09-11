@@ -53,14 +53,14 @@ struct window::win32_window_implementation
 		y = (GetSystemMetrics(SM_CYSCREEN) - h) / 2;
 
 		m_hWnd = CreateWindowEx(window_style_ex,
-								CLASSNAME.data(),
-								title.data(),
-								window_style,
-								x, y, w, h,
-								parent_hwnd,
-								nullptr,
-								GetModuleHandle(nullptr),
-								static_cast<LPVOID>(this));
+		                        CLASSNAME.data(),
+		                        title.data(),
+		                        window_style,
+		                        x, y, w, h,
+		                        parent_hwnd,
+		                        nullptr,
+		                        GetModuleHandle(nullptr),
+		                        static_cast<LPVOID>(this));
 	}
 
 	void Destroy()
@@ -109,8 +109,8 @@ struct window::win32_window_implementation
 		{
 			uint64_t windowPtr = reinterpret_cast<uint64_t>(reinterpret_cast<LPCREATESTRUCT>(lParam)->lpCreateParams);
 			SetWindowLongPtr(hWnd,
-							 GWLP_USERDATA,
-							 windowPtr);
+			                 GWLP_USERDATA,
+			                 windowPtr);
 		}
 
 		win32_window_implementation *wnd = reinterpret_cast<win32_window_implementation *>(GetWindowLongPtr(hWnd, GWLP_USERDATA));
