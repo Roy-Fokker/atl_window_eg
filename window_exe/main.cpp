@@ -11,7 +11,7 @@ auto main() -> int
 		using namespace atl_window_eg;
 
 		bool exit_program = false;
-		window wnd({ 800, 600 }, L"ATL Window");
+		window wnd({ 800, 600 }, L"ATL/Win32 Window Example");
 
 		wnd.set_message_callback(window::message_type::keypress,
 		                         [&exit_program](uintptr_t key_code, uintptr_t extension) -> bool
@@ -30,5 +30,6 @@ auto main() -> int
 			wnd.process_messages();
 		}
 	}
+	
 	return 0;
 }
